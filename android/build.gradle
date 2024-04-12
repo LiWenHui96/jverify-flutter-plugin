@@ -35,6 +35,17 @@ android {
         disable 'InvalidPackage'
     }
 
+    buildTypes {
+        release {
+            minifyEnabled true
+            // library 混淆 -> 随 library 引用，自动添加到 apk 打包混淆
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'consumer-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'consumer-rules.pro'
+        }
+    }
 }
 
 dependencies {
